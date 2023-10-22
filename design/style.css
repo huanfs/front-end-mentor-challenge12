@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap');
+:root{
+    /*primary colors*/
+    --LightCyan: hsl(193, 38%, 86%);
+    --NeonGreen: hsl(150, 100%, 66%);
+
+    /*neutral colors*/
+    --GrayishBlue: hsl(217, 19%, 38%);
+    --DarkGrayishBlue: hsl(217, 19%, 24%);
+    --DarkBlue: hsl(218, 23%, 16%);
+}
+
+/*global customs*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+    height:100vh;
+    display:grid;
+    place-items:center;
+    font-family: 'Manrope', sans-serif;
+    background-color:var(--DarkBlue);
+}
+#root{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0.5em;
+    border-radius:20px;
+    padding:1em;
+    background-color:var(--DarkGrayishBlue);
+}
+#root h4, #root h2{
+    font-weight:bolder;
+}
+#root h4, h4 span{
+    text-transform:uppercase;
+    color:var(--NeonGreen);
+}
+#root h2{
+    text-align:center;
+    color:var(--LightCyan);
+}
+.separator{
+    margin:20px 0 -20px 0;
+}
+.dice{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    border-radius:30px;
+    background-color:var(--NeonGreen);
+    transition:0.5s;
+    cursor:crosshair;
+    position:relative;
+    top:2.7em;
+}
+.dice:hover{
+    box-shadow:0 0 10px var(--NeonGreen);
+}
+/*end of global customizations*/
+
+@media screen and (min-width:410px){
+    #root{
+        width:490px;
+    }
+}
+
+@media screen and (max-width:409px){
+    #root{
+        width:90vw;
+    }
+    .separator{
+        width:90%;
+    }
+}

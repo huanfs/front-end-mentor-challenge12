@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip generator</title>
+    <link rel="stylesheet" type="text/css" href="design/style.css">
+</head>
+<body>
+    <div id="root">
+        <!--ROOT-->
+    </div>
+
+
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const { React, ReactDOM} = window;
+
+    const App = () => {
+        return(
+            <>
+            <h4>advice <span>#1234</span></h4>
+            <h2>
+                "Whant to get a tip today?
+                click the button bellow XD.
+                " 
+            </h2>
+            <img className="separator" src="design/images/pattern-divider-desktop.svg"></img>
+            <Dice path="design/images/icon-dice.svg"/>
+            </>
+        )
+    }
+
+    {/*Dice component who contains action*/}
+    const Dice = ({path}) => {
+        async function RequestTip(){
+            const url = await fetch("https://api.adviceslip.com/advice");
+            const response = await url.json();
+            const id = document.querySelector("h4 span");
+            const tip = document.querySelector("h2");
+            id.innerHTML=`#${response.slip.id}`;
+            tip.innerHTML=`"${response.slip.advice}"`;
+        }
+        return(
+            <div className="dice" onClick={RequestTip}>
+                <img src={path}></img>
+            </div>
+        )
+    }
+    ReactDOM.render(<App/>, document.querySelector("#root"));
+</script>
+</body>
+</html>
